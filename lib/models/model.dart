@@ -1,22 +1,22 @@
-class RandomJokes {
-  final String createdAt;
+class Random_Jokes {
   final String id;
-  final String updatedAt;
-  final String jokes;
+  final String myJokes;
+  final String launchDate;
+  final String editedDate;
 
-  RandomJokes({
-    required this.createdAt,
+  Random_Jokes({
+    required this.launchDate,
     required this.id,
-    required this.updatedAt,
-    required this.jokes,
+    required this.editedDate,
+    required this.myJokes,
   });
 
-  factory RandomJokes.fromJson(Map<String, dynamic> json) {
-    return RandomJokes(
-      createdAt: json['created_at'],
-      id: json['id'],
-      updatedAt: json['updated_at'],
-      jokes: json['value'],
+  factory Random_Jokes.fromJson(Map<String, dynamic> json) {
+    return Random_Jokes(
+      id: json['Id'],
+      myJokes: json['MyJokes'],
+      launchDate: json['LaunchDate'],
+      editedDate: json['Editeddate'],
     );
   }
 }

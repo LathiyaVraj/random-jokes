@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import '../helpers/api_helper.dart';
 import '../models/model.dart';
 
-class AllJokes extends StatefulWidget {
-  const AllJokes({Key? key}) : super(key: key);
+class SavedJokes extends StatefulWidget {
+  const SavedJokes({Key? key}) : super(key: key);
 
   @override
-  State<AllJokes> createState() => _AllJokesState();
+  State<SavedJokes> createState() => _SavedJokesState();
 }
 
-class _AllJokesState extends State<AllJokes> {
-  late Future<RandomJokes?> fetchedJokes;
+class _SavedJokesState extends State<SavedJokes> {
+  late Future<Random_Jokes?> fetchedJokes;
 
   @override
   initState() {
@@ -21,7 +21,7 @@ class _AllJokesState extends State<AllJokes> {
     Timer.periodic(const Duration(milliseconds: 100), (timer) {
       setState(() {});
     });
-    fetchedJokes = APIHelper.apiHelper.fetchJokes();
+    fetchedJokes = JokesApiHelper.jokes_api_helper.attach_Jokes();
   }
 
   @override
@@ -37,54 +37,41 @@ class _AllJokesState extends State<AllJokes> {
             color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.yellowAccent,
         title: Text(
           "SAVED JOKES",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       body: Container(
         height: double.infinity,
-        color: Colors.black,
+        color: Colors.greenAccent,
         child: FutureBuilder(
           future: fetchedJokes,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasData) {
-              RandomJokes data = snapshot.data as RandomJokes;
+              Random_Jokes data = snapshot.data as Random_Jokes;
               return Padding(
                 padding: const EdgeInsets.all(20),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 20),
                       Container(
                         alignment: Alignment.center,
-                        height: 200,
+                        height: 150,
                         decoration: BoxDecoration(
-                            color: Colors.black,
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.yellow,
-                                  blurRadius: 20,
-                                  spreadRadius: 1),
-                            ],
+                            color: Colors.green.shade900,
                             borderRadius: BorderRadius.circular(20)),
                         child: Padding(
                           padding: const EdgeInsets.all(15),
                           child: Text(
-                            data.jokes,
+                            data.myJokes,
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
-                              shadows: [
-                                BoxShadow(
-                                  blurRadius: 20,
-                                  color: Colors.yellowAccent,
-                                  spreadRadius: 20,
-                                )
-                              ],
                             ),
                           ),
                         ),
