@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'api_helper.dart';
-import 'model.dart';
+import '../helpers/api_helper.dart';
+import '../models/model.dart';
 
 class AllJokes extends StatefulWidget {
   const AllJokes({Key? key}) : super(key: key);

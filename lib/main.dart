@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'api_helper.dart';
-import 'jokes_page.dart';
-import 'model.dart';
+import 'helpers/api_helper.dart';
+import 'models/model.dart';
+import 'screens/jokes_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
